@@ -49,7 +49,7 @@ A rain sensor is one kind of switching device which is used to detect the rainfa
  ### FIGURE-03 Rain Sensor (LM393) Rain Sensor Module & connection diagram
 
 ## Working Principle:
-Experiment 4A
+Experiment 3A
 The Temperature and Humidity Sensor (DHT-11) OUT is connected to one of the GPIO pins of the Raspberry Pi 4.
 The Python script sets the measure the real time temperature and Humidity output and shown in HiveMQcloud with current status and Console.
 CIRCUIT DIAGRAM
@@ -58,7 +58,7 @@ Connect the Gnd of the Temperature and Humidity Sensor (DHT-11) is connected to 
 Connect the OUT to any one GPIO.
 
 
-Experiment 4B
+Experiment 3B
 The Rain Sensor (LM393) D0 is connected one of the GPIO pins in Raspberry Pi 4.
 The Python script sets the Rain Sensor (LM393) value based on the variation in the rain water (Dry or Wet) and shown in HiveMQ Cloud and console.
 CIRCUIT DIAGRAM
@@ -67,7 +67,7 @@ Connect the Rain Sensor (LM393) GND to any GND.
 Connect the Rain Sensor (LM393) D0 to any one GPIO. 
 
 
-Experiment 4A
+Experiment 3A
 ## PROGRAM (Python)
 ```
 
@@ -80,7 +80,22 @@ Experiment 4A
 ````
 
 ### OUPUT  
-Experiment 4A
+Experiment 3A
+
+Experiment 3B
+## PROGRAM (Python)
+```
+
+
+ 
+
+
+
+ 
+````
+
+### OUPUT  
+Experiment 3B
 
 # FIGURE -04 ADD TITILE HERE 
 
@@ -88,7 +103,7 @@ Experiment 4A
 
 # FIGURE -06 ADD TITLE HERE 
 
-Experiment 4B
+Experiment 3B
 ## PROGRAM (Python)
 ```
 
