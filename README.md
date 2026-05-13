@@ -111,9 +111,10 @@ Experiment 3A
 
 <img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/558d3489-29c5-4d42-9a0d-ec05a76123a0" />
 
-<img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/9624d599-426a-4a84-8905-b6a2a8148042" />
+<img width="1600" height="741" alt="image" src="https://github.com/user-attachments/assets/732e1743-43e5-49e8-b39a-5e72341865e5" />
 
-<img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/11b199db-6b8a-4958-98fa-d916231c3f10" />
+<img width="1600" height="775" alt="image" src="https://github.com/user-attachments/assets/e84537f4-e845-4542-a0ad-bd74f5bff8d1" />
+
 
 
 Experiment 3B
