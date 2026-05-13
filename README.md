@@ -2,10 +2,10 @@
 
 ---
 
-### **NAME:**  
-### **DEPARTMENT:**  
-### **ROLL NO:**  
-### **DATE OF EXPERIMENT:**  
+### **NAME:** Beatrice Thomas 
+### **DEPARTMENT:**  CSE IOT
+### **ROLL NO:**  212223110005
+### **DATE OF EXPERIMENT:**  12/5/2026
 
 ---
 
@@ -70,23 +70,51 @@ Connect the Rain Sensor (LM393) D0 to any one GPIO.
 Experiment 3A
 ## PROGRAM (Python)
 ```
+import Adafruit_DHT
+import paho.mqtt.client as mqtt
+import ssl
+import time
+# ---------------- DHT11 Setup ----------------
+DHT_SENSOR = Adafruit_DHT.DHT11
+DHT_PIN = 18 # GPIO4
+# ---------------- HiveMQ Cloud Credentials ----------------
+MQTT_BROKER = "38990d675fc94be98fe00d7d832e92d4.s1.eu.hivemq.cloud"
+MQTT_PORT = 8883
+MQTT_USER = "hivemq.webclient.1778575355643"
+MQTT_PASSWORD = "01pf2*BTOAsVP>@od.3l"
+TEMP_TOPIC = "raspberrypi/dht/temperature"
+HUM_TOPIC = "raspberrypi/dht/humidity"
+client = mqtt.Client()
+client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
+client.tls_set(tls_version=ssl.PROTOCOL_TLS)
+client.connect(MQTT_BROKER, MQTT_PORT)
+print("Connected to HiveMQ Cloud")
+print("Reading DHT11 Sensor...\n")
+while True:
+	humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+	if humidity is not None and temperature is not None:
+		print(f"Temperature = {temperature} °C")
+		print(f"Humidity = {humidity} %")
+		print("---------------------------")
+			# Publish to HiveMQ
+		client.publish(TEMP_TOPIC, temperature)
+		client.publish(HUM_TOPIC, humidity)
+		print("Data sent to HiveMQ\n")
+	else:
+		print("Sensor failure. Check wiring.")
+	time.sleep(10)
 
-
- 
-
-
-
- 
 ````
 
 ### OUPUT  
+Experiment 3A
 
+<img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/558d3489-29c5-4d42-9a0d-ec05a76123a0" />
 
-# FIGURE -04 ADD TITILE HERE 
+<img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/9624d599-426a-4a84-8905-b6a2a8148042" />
 
-#  FIGURE -05 ADD TITILE HERE 
+<img width="1599" height="899" alt="WhatsApp Image 2026-05-12 at 2 16 18 PM" src="https://github.com/user-attachments/assets/11b199db-6b8a-4958-98fa-d916231c3f10" />
 
-# FIGURE -06 ADD TITLE HERE 
 
 Experiment 3B
 ## PROGRAM (Python)
