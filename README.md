@@ -120,22 +120,115 @@ Experiment 3A
 Experiment 3B
 ## PROGRAM (Python)
 ```
+import time
+import ssl
+import json
+import RPi.GPIO as GPIO
+import paho.mqtt.client as mqtt
 
+# =====================================================
+# GPIO SETUP
+# =====================================================
 
- 
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
+RAIN_SENSOR_PIN = 18
 
+GPIO.setup(RAIN_SENSOR_PIN, GPIO.IN)
 
- 
-````
+# =====================================================
+# MQTT SETUP
+# =====================================================
+
+MQTT_BROKER = "38990d675fc94be98fe00d7d832e92d4.s1.eu.hivemq.cloud"
+MQTT_PORT = 8883
+
+MQTT_USER = "hivemq.webclient.1779177330954"
+MQTT_PASSWORD = ";jOwNv#X!x4K0.LU2uo1"
+
+MQTT_TOPIC = "raspberrypi/rain"
+
+client = mqtt.Client()
+
+client.username_pw_set(
+    MQTT_USER,
+    MQTT_PASSWORD
+)
+
+client.tls_set(
+    tls_version=ssl.PROTOCOL_TLS
+)
+
+# =====================================================
+# CONNECT TO HIVEMQ
+# =====================================================
+
+print("Connecting to HiveMQ Cloud...")
+
+client.connect(
+    MQTT_BROKER,
+    MQTT_PORT
+)
+
+client.loop_start()
+
+print("Connected Successfully")
+
+# =====================================================
+# MAIN LOOP
+# =====================================================
+
+try:
+
+    while True:
+
+        rain_value = GPIO.input(RAIN_SENSOR_PIN)
+
+        # ACTIVE LOW SENSOR
+        if rain_value == 0:
+
+            status = "RAIN DETECTED"
+            rain_status = 1
+
+        else:
+
+            status = "NO RAIN"
+            rain_status = 0
+
+        print(status)
+
+        payload = {
+            "rain_status": rain_status,
+            "message": status
+        }
+
+        client.publish(
+            MQTT_TOPIC,
+            json.dumps(payload)
+        )
+
+        print("Data Published")
+        print(payload)
+
+        time.sleep(5)
+
+except KeyboardInterrupt:
+
+    print("Program Stopped")
+
+    GPIO.cleanup()
+
+    client.loop_stop()
+    client.disconnect()
+```
 
 ### OUPUT  
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/7531097a-9f49-4157-a91e-62bc1e2ff471" />
 
-# FIGURE -07 ADD TITILE HERE 
+<img width="1600" height="817" alt="image" src="https://github.com/user-attachments/assets/6743a6c3-6c74-4856-97fc-7beefa22529f" />
+<img width="1600" height="711" alt="image" src="https://github.com/user-attachments/assets/7cbdcce9-dc74-423e-b9be-43b9fb2b9441" />
 
-#  FIGURE -08 ADD TITILE HERE 
-
-# FIGURE -09 ADD TITLE HERE 
 
 
 
